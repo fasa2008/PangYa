@@ -1,0 +1,16 @@
+Header -> WEPXq (57 45 50 58 71 00 00 00)
+
+Unknow 1 	- DWORD (xx 00 00 00)
+Unknow 2	- DWORD (xx 00 00 00)
+Unknow 3 	- DWORD (xx 00 00 00)
+Unknow 4 	- DWORD (xx 00 00 00)
+Unknow 5 	- DWORD (xx 00 00 00)
+Unknow 6 	- DWORD (xx 00 00 00)
+Unknow 7 	- DWORD (xx 00 00 00)
+Unknow 8 	- DWORD (xx 00 00 00)
+
+TEXT - STRING "DefaultCamera"
+
+------
+
+NEED more info
