@@ -31,3 +31,74 @@ Skeleton -> BONE (42 4F 4E 45)
 	}
 
 }
+
+Animation -> ANIM (41 4E 49 4D)
+{
+	// Size of animation part (Include number of Anim) - DWORD (XX XX 00 00)
+	
+	// Number of Anim - Byte ( XX ) -> FF for no anim
+	{
+		// Data Part (unknow atm)
+	}
+}
+
+Mesh -> MESH (72 36 47 42)
+{
+	// Size of mesh part (Include number of mesh) - DWORD (XX XX 00 00)
+	
+	// Number of mesh - DWORD ( XX XX 00 00)
+	{
+		// Data Part (unknow atm)
+	}
+	
+	// Some number of 00 --> inknow
+}
+
+Unknow -> FANM (46 41 4E 4D)
+{
+	// Size of FANM part (Include number of FANM) - DWORD (XX XX 00 00)
+	
+	// Number of FANM - DWORD ( XX XX 00 00)
+	{
+		// Data part (curious you can see dds link , name of pet ...)
+	}
+}
+
+unknow -> FRAM (46 52 41 4D)
+{
+	// Size of FRAM part (Include number of FRAM) - DWORD (XX XX 00 00)
+	
+	// Number of FRAM - DWORD ( XX XX 00 00)
+	{
+		// Data part (i no have look at atm)
+	}
+}
+
+unknow -> MOTI (4D 4F 54 49)
+{
+	// Size of MOTI part (Include number of MOTI) - DWORD (XX XX 00 00)
+	
+	// Number of MOTI - DWORD ( XX XX 00 00)
+	{
+		// Data part (i no have look at atm)
+	}
+}
+
+
+Collision box -> COLL (43 4F 4C 4C)
+{
+	// Size of collision part (Include number of coll) - DWORD (XX XX 00 00)
+	
+	// Number of collsion box - DWORD ( XX XX 00 00)
+	// Unknow  - DWORD ( 01 00 00 00)
+	// Unknow  - DWORD ( 01 00 00 00)
+	{
+		// Name Length  - DWORD ( XX 00 00 00)
+		// Name of Box 	- String
+	}		
+	// JumpSpace 1  - DWORD ( 00 00 00 00)
+	// JumpSpace 2  - DWORD ( 00 00 00 00)
+	// Data part (inknow)
+}
+
+
