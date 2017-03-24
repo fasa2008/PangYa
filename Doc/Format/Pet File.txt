@@ -1,0 +1,20 @@
+Version -> VERS (56 45 52 53)
+{
+	//Unknow - BYTE 1 (04)
+	//Unknow - BYTE 2	(00)
+	//Unknow - BYTE 3	(00)
+	//Unknow - BYTE 4	(00)
+	
+	//Unknow - BYTE 5	(01 or 00)
+	//Unknow - BYTE 6	(01)
+	//Unknow - BYTE 7 (FE)
+	//Unknow - BYTE 8 (FF)
+}
+
+TEXTURE -> TEXT (54 45 58 54)
+{
+	// UNKNOW - DWORD (XX 00 00 00)
+	// UNKNOW - DWORD ( (01 or 02) 00 00 00)
+	// FILENAME of TEXTURE - String
+	
+}
