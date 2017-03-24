@@ -1,20 +1,33 @@
 Version -> VERS (56 45 52 53)
 {
-	//Unknow - BYTE 1 (04)
-	//Unknow - BYTE 2	(00)
-	//Unknow - BYTE 3	(00)
-	//Unknow - BYTE 4	(00)
+	// Number of Version - DWORD ( 04 00 00 00)
 	
-	//Unknow - BYTE 5	(01 or 00)
-	//Unknow - BYTE 6	(01)
-	//Unknow - BYTE 7 (FE)
-	//Unknow - BYTE 8 (FF)
+	//Unknow - BYTE 1	(01 or 00)
+	//Unknow - BYTE 2	(01)
+	//Unknow - BYTE 3 (FE)
+	//Unknow - BYTE 4 (FF)
 }
 
 TEXTURE -> TEXT (54 45 58 54)
 {
-	// UNKNOW - DWORD (XX 00 00 00)
+	// Size of Texture part (Include number of tex) - DWORD (XX 00 00 00)
+	
 	// Number of Texture - DWORD ( (01 or 02) 00 00 00)
+	{
 	// FILENAME of TEXTURE - String
 	// UNKNOW PART
+	}
+	// unknow part 2
+}
+
+Skeleton -> BONE (42 4F 4E 45)
+{
+	// Size of Bone part (Include number of bone) - DWORD (XX XX 00 00)
+	
+	// Number of Bone - Byte ( XX )
+	{
+		// BONE Name - String
+		// Data Part
+	}
+
 }
