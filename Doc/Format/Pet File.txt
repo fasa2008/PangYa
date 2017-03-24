@@ -14,7 +14,7 @@ Version -> VERS (56 45 52 53)
 TEXTURE -> TEXT (54 45 58 54)
 {
 	// UNKNOW - DWORD (XX 00 00 00)
-	// UNKNOW - DWORD ( (01 or 02) 00 00 00)
+	// Number of Texture - DWORD ( (01 or 02) 00 00 00)
 	// FILENAME of TEXTURE - String
-	
+	// UNKNOW PART
 }
