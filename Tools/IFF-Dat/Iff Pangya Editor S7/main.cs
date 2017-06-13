@@ -21,5 +21,10 @@ namespace Iff_Pangya_Editor_S7
         {
             new LangueEditor().Show();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            new Desc_Editor().Show();
+        }
     }
 }
