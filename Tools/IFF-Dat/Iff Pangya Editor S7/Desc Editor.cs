@@ -78,6 +78,7 @@ namespace Iff_Pangya_Editor_S7
                     ListViewItem item = new ListViewItem(str.ID.ToString())
                     {
                         Tag = str.Index
+
                     };
                     bool found = str.ID.ToString().Contains(txtFilter.Text);
 
@@ -105,19 +106,29 @@ namespace Iff_Pangya_Editor_S7
 
         private void button1_Click(object sender, EventArgs e)
         {
-            DescStock item = new DescStock
+            if (txtString.Text != null && ObjectId.Text != null)
             {
-                Texte = this.txtString.Text.Replace("\r\n", "\n"),
-                ID = Convert.ToUInt32(ObjectId.Text),
-                Index = Convert.ToInt32(DescListing.Last().Index + 1)
-            };
-            this.DescListing.Add(item);
-            UpdateStringList();
+                var itemToRemove = DescListing.SingleOrDefault(r => r.ID == Convert.ToUInt32(ObjectId.Text));
+                if (itemToRemove == null)
+                {
+                    DescStock item = new DescStock
+                    {
+                        Texte = this.txtString.Text.Replace("\r\n", "\n"),
+                        ID = Convert.ToUInt32(ObjectId.Text),
+                        Index = Convert.ToInt32(DescListing.Last().Index + 1)
+                    };
+                    this.DescListing.Add(item);
+                    UpdateStringList();
+                }
+                else
+                MessageBox.Show("Error this IdObject Allready Exist !");
+
+            }
         }
 
         private void btnApply_Click(object sender, EventArgs e)
         {
-            if (txtString.Text != null)
+            if (txtString.Text != null && ObjectId.Text != null)
             {
 
                 DescListing[(int)this.lstStrings.SelectedItems[0].Tag].Texte = this.txtString.Text.Replace("\r\n", "\n");
@@ -143,6 +154,26 @@ namespace Iff_Pangya_Editor_S7
                 {
                     MessageBox.Show("Error while writing the file. Please Try Again.");
                 }
+            }
+        }
+
+        private void btnFilter_Click(object sender, EventArgs e)
+        {
+            UpdateStringList();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            if (txtString.Text != null && ObjectId.Text != null)
+            {
+
+                var itemToRemove = DescListing.SingleOrDefault(r => r.ID == Convert.ToUInt32(ObjectId.Text));
+                if (itemToRemove != null)
+                    DescListing.Remove(itemToRemove);
+
+                txtString.Text = null;
+                ObjectId.Text = null;
+                UpdateStringList();
             }
         }
     }
@@ -202,15 +233,18 @@ namespace Iff_Pangya_Editor_S7
             file.JumpToFirstRecord(writer);
             foreach (Desc_Editor.DescStock record in descriptionList)
             {
-                long position = writer.BaseStream.Position;
-                writer.Write(record.ID);
-                position += IdObjetlen;
-                if (record.Texte.Length >= DescriptionLen)
+                if (record.ID != 0)
                 {
-                    record.Texte.Substring(0, DescriptionLen - 1);
+                    long position = writer.BaseStream.Position;
+                    writer.Write(record.ID);
+                    position += IdObjetlen;
+                    if (record.Texte.Length >= DescriptionLen)
+                    {
+                        record.Texte.Substring(0, DescriptionLen - 1);
+                    }
+                    writer.Write(record.Texte.ToCharArray());
+                    writer.Seek(DescriptionLen - record.Texte.Length, SeekOrigin.Current);
                 }
-                writer.Write(record.Texte.ToCharArray());
-                writer.Seek(DescriptionLen - record.Texte.Length, SeekOrigin.Current);
             }
             writer.Close();
             return true;
