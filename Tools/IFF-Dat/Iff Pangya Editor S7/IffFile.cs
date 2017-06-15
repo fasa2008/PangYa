@@ -23,7 +23,7 @@ namespace Iff_Pangya_Editor_S7
                 return this.MagicNumber.Contains<ushort>(num2);
             }
 
-            public static Encoding FileEncoding(IFF_REGION region)
+            public static Encoding GetFileEncodingByRegion(IFF_REGION region)
             {
                 IFF_REGION iff_region = region;
                 if (iff_region <= IFF_REGION.Japan)

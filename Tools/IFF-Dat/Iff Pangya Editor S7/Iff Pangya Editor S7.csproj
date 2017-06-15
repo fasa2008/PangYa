@@ -46,35 +46,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Desc Editor.cs">
+    <Compile Include="DescriptionEditor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Desc Editor.Designer.cs">
-      <DependentUpon>Desc Editor.cs</DependentUpon>
+    <Compile Include="DescriptionEditor.Designer.cs">
+      <DependentUpon>DescriptionEditor.cs</DependentUpon>
     </Compile>
     <Compile Include="IffFile.cs" />
-    <Compile Include="LangueEditor.cs">
+    <Compile Include="LangageEditor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LangueEditor.Designer.cs">
-      <DependentUpon>LangueEditor.cs</DependentUpon>
+    <Compile Include="LangageEditor.Designer.cs">
+      <DependentUpon>LangageEditor.cs</DependentUpon>
     </Compile>
-    <Compile Include="main.cs">
+    <Compile Include="MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="main.Designer.cs">
-      <DependentUpon>main.cs</DependentUpon>
+    <Compile Include="MainWindow.Designer.cs">
+      <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Desc Editor.resx">
-      <DependentUpon>Desc Editor.cs</DependentUpon>
+    <EmbeddedResource Include="DescriptionEditor.resx">
+      <DependentUpon>DescriptionEditor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LangueEditor.resx">
-      <DependentUpon>LangueEditor.cs</DependentUpon>
+    <EmbeddedResource Include="LangageEditor.resx">
+      <DependentUpon>LangageEditor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="main.resx">
-      <DependentUpon>main.cs</DependentUpon>
+    <EmbeddedResource Include="MainWindow.resx">
+      <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -16,7 +16,7 @@ namespace Iff_Pangya_Editor_S7
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new main());
+            Application.Run(new MainWindow());
         }
     }
 }
