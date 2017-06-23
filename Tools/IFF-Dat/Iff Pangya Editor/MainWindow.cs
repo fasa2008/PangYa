@@ -12,8 +12,10 @@ namespace Iff_Pangya_Editor
 {
     public partial class MainWindow : Form
     {
+        private static CreditWindow openCredit;
         public MainWindow()
         {
+            openCredit = null;
             InitializeComponent();
         }
 
@@ -25,6 +27,21 @@ namespace Iff_Pangya_Editor
         private void button4_Click(object sender, EventArgs e)
         {
             new Desc_Editor().Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (openCredit == null)
+            {
+                openCredit = new CreditWindow();
+                openCredit.Show();
+                openCredit.FormClosed += delegate { openCredit = null; };
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

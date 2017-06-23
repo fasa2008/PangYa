@@ -43,6 +43,7 @@
             this.button1.TabIndex = 0;
             this.button1.Text = "Exit";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -52,6 +53,7 @@
             this.button2.TabIndex = 1;
             this.button2.Text = "Credit";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
@@ -73,7 +75,7 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
-            // main
+            // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -86,7 +88,7 @@
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(215, 375);
             this.MinimumSize = new System.Drawing.Size(215, 375);
-            this.Name = "main";
+            this.Name = "MainWindow";
             this.Text = "Iff Pangya Editor - S7";
             this.ResumeLayout(false);
 

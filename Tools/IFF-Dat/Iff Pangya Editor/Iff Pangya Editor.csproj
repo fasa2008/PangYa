@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CreditWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreditWindow.Designer.cs">
+      <DependentUpon>CreditWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="DescriptionEditor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -67,6 +73,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="CreditWindow.resx">
+      <DependentUpon>CreditWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DescriptionEditor.resx">
       <DependentUpon>DescriptionEditor.cs</DependentUpon>
     </EmbeddedResource>
