@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Iff_Pangya_Editor_S7
+namespace Iff_Pangya_Editor
 {
     static class Program
     {

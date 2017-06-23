@@ -8,8 +8,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Iff_Pangya_Editor.IffFile;
 
-namespace Iff_Pangya_Editor_S7
+namespace Iff_Pangya_Editor
 {
     public partial class Desc_Editor : Form
     {
@@ -22,6 +23,8 @@ namespace Iff_Pangya_Editor_S7
 
         List<DescStock> DescListing;
         List<DescList> DescListMem;
+        public IFF_REGION RegionSelected = IffFile.IFF_REGION.Null;
+
         public Desc_Editor()
         {
             InitializeComponent();
@@ -29,31 +32,7 @@ namespace Iff_Pangya_Editor_S7
 
         private void btnOpen_Click(object sender, EventArgs e)
         {
-            OpenFileDialog dialog = new OpenFileDialog
-            {
-                Filter = "Pangya IFF Desc (Desc*.iff)|Desc*.iff",
-                Title = "Open IFF Desc"
-            };
-            if (dialog.ShowDialog() == DialogResult.OK)
-            {
-                DescListing = new List<DescStock>();
-                DescListMem = new List<DescList>();
-                this.lstStrings.Items.Clear();
-                DescListMem = DescList.LoadDescFile(dialog.FileName);
-                int i = 0;
-                foreach (DescList record in this.DescListMem)
-                {
-                    DescStock item = new DescStock
-                    {
-                        Texte = record.Description.ToString(),
-                        ID = record.IdObject,
-                        Index = i
-                    };
-                    this.DescListing.Add(item);
-                    i++;
-                }
-                UpdateStringList();
-            }
+     
         }
 
         private void UpdateStringList()
@@ -142,22 +121,7 @@ namespace Iff_Pangya_Editor_S7
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            SaveFileDialog dialog = new SaveFileDialog
-            {
-                Title = "Save Pangya IFF Desc",
-                Filter = "Pangya IFF File (*.iff)|*.iff"
-            };
-            if (dialog.ShowDialog() == DialogResult.OK)
-            {
-                if (DescList.SaveDescFile(dialog.FileName, this.DescListing))
-                {
-                    MessageBox.Show("The Desc IFF have been saved!");
-                }
-                else
-                {
-                    MessageBox.Show("Error while writing the file. Please Try Again.");
-                }
-            }
+
         }
 
         private void btnFilter_Click(object sender, EventArgs e)
@@ -179,6 +143,107 @@ namespace Iff_Pangya_Editor_S7
                 UpdateStringList();
             }
         }
+
+        private void openFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dialog = new OpenFileDialog
+            {
+                Filter = "Pangya IFF Desc (Desc*.iff)|Desc*.iff",
+                Title = "Open IFF Desc"
+            };
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                DescListing = new List<DescStock>();
+                DescListMem = new List<DescList>();
+                this.lstStrings.Items.Clear();
+                DescListMem = DescList.LoadDescFile(dialog.FileName, RegionSelected);
+                int i = 0;
+                foreach (DescList record in this.DescListMem)
+                {
+                    DescStock item = new DescStock
+                    {
+                        Texte = record.Description.ToString(),
+                        ID = record.IdObject,
+                        Index = i
+                    };
+                    this.DescListing.Add(item);
+                    i++;
+                }
+                UpdateStringList();
+            }
+        }
+
+        private void saveFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog dialog = new SaveFileDialog
+            {
+                Title = "Save Pangya IFF Desc",
+                Filter = "Pangya IFF File (*.iff)|*.iff"
+            };
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                if (DescList.SaveDescFile(dialog.FileName, this.DescListing, RegionSelected))
+                {
+                    MessageBox.Show("The Desc IFF have been saved!");
+                }
+                else
+                {
+                    MessageBox.Show("Error while writing the file. Please Try Again.");
+                }
+            }
+        }
+
+        private void Uncheck_all_encoding(object sender, EventArgs e)
+        {
+            eNGLISHToolStripMenuItem.Checked = false;
+            jAPANToolStripMenuItem.Checked = false;
+            tHAIToolStripMenuItem.Checked = false;
+            oTHERToolStripMenuItem.Checked = false;
+            autoToolStripMenuItem.Checked = false;
+            kOREANToolStripMenuItem.Checked = false;
+        }
+
+        private void autoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Uncheck_all_encoding(sender, e);
+            RegionSelected = IffFile.IFF_REGION.Null;
+            autoToolStripMenuItem.Checked = true;
+        }
+
+        private void eNGLISHToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Uncheck_all_encoding(sender, e);
+            RegionSelected = IffFile.IFF_REGION.Default;
+            eNGLISHToolStripMenuItem.Checked = true;
+        }
+
+        private void jAPANToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Uncheck_all_encoding(sender, e);
+            RegionSelected = IffFile.IFF_REGION.Japan_8960;
+            jAPANToolStripMenuItem.Checked = true;
+        }
+
+        private void tHAIToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Uncheck_all_encoding(sender, e);
+            RegionSelected = IffFile.IFF_REGION.Thaiwan;
+            tHAIToolStripMenuItem.Checked = true;
+        }
+
+        private void oTHERToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Uncheck_all_encoding(sender, e);
+            RegionSelected = IffFile.IFF_REGION.Default;
+            oTHERToolStripMenuItem.Checked = true;
+        }
+
+        private void kOREANToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Uncheck_all_encoding(sender, e);
+            RegionSelected = IffFile.IFF_REGION.Korea_30395;
+            kOREANToolStripMenuItem.Checked = true;
+        }
     }
 
     public class DescList
@@ -191,7 +256,7 @@ namespace Iff_Pangya_Editor_S7
         public static int DescriptionLen = 0x200; //512
         public static int TotalLen = 0x204;
 
-        public static List<DescList> LoadDescFile(string fileName)
+        public static List<DescList> LoadDescFile(string fileName, IFF_REGION RegionSelected)
         {
             if (!File.Exists(fileName))
             {
@@ -201,6 +266,10 @@ namespace Iff_Pangya_Editor_S7
             using (BinaryReader reader = new BinaryReader(File.Open(fileName, FileMode.Open, FileAccess.Read), IffFile.GetFileEncodingByRegion(IffFile.IFF_REGION.Default)))
             {
                 IffFile file = new IffFile();
+                if (RegionSelected == IffFile.IFF_REGION.Null)
+                {
+                    file.SetIffRegion(reader);
+                }
                 ushort numberOfRecords = file.GetNumberOfRecords(reader);
                 file.JumpToFirstRecord(reader);
                 if (file.CheckMagicNumber(reader))
@@ -213,10 +282,23 @@ namespace Iff_Pangya_Editor_S7
                             IdObject = reader.ReadUInt32()
                         };
                         position += IdObjetlen;
-                        item.Description = IffFile.GetFileEncodingByRegion(IffFile.IFF_REGION.Default).GetString(reader.ReadBytes(DescriptionLen));
+                        if (RegionSelected == IffFile.IFF_REGION.Null)
+                        {
+                            item.Description = IffFile.GetFileEncodingByRegion(file.Region).GetString(reader.ReadBytes(DescriptionLen));
+                        }
+                        else
+                        {
+                            item.Description = IffFile.GetFileEncodingByRegion(RegionSelected).GetString(reader.ReadBytes(DescriptionLen));
+                        }
                         position += DescriptionLen;
                         list.Add(item);
                     }
+
+                    if (RegionSelected == IffFile.IFF_REGION.Null)
+                    {
+                        RegionSelected = file.Region;
+                    }
+
                     reader.Close();
                     return list;
                 }
@@ -224,9 +306,18 @@ namespace Iff_Pangya_Editor_S7
             } 
        }
 
-        public static bool SaveDescFile(string fileName, List<Desc_Editor.DescStock> descriptionList)
+        public static bool SaveDescFile(string fileName, List<Desc_Editor.DescStock> descriptionList , IFF_REGION RegionSelected)
         {
-            BinaryWriter writer = new BinaryWriter(File.Open(fileName, FileMode.Create, FileAccess.Write), IffFile.GetFileEncodingByRegion(IffFile.IFF_REGION.Default));
+            BinaryWriter writer;
+            if (RegionSelected == IffFile.IFF_REGION.Null)
+            {
+                writer = new BinaryWriter(File.Open(fileName, FileMode.Create, FileAccess.Write), IffFile.GetFileEncodingByRegion(RegionSelected));
+            }
+            else
+            {
+                writer = new BinaryWriter(File.Open(fileName, FileMode.Create, FileAccess.Write), IffFile.GetFileEncodingByRegion(IffFile.IFF_REGION.Default));
+            }
+
             IffFile file = new IffFile
             {
                 ObjectsInFile = ushort.Parse(descriptionList.Count.ToString())

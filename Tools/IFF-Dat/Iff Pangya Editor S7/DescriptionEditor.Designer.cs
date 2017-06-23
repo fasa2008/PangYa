@@ -1,4 +1,4 @@
-﻿namespace Iff_Pangya_Editor_S7
+﻿namespace Iff_Pangya_Editor
 {
     partial class Desc_Editor
     {
@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Desc_Editor));
-            this.btnSave = new System.Windows.Forms.Button();
-            this.btnOpen = new System.Windows.Forms.Button();
             this.lstStrings = new System.Windows.Forms.ListView();
             this.columnHeader_0 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnFilter = new System.Windows.Forms.Button();
@@ -43,27 +41,19 @@
             this.label3 = new System.Windows.Forms.Label();
             this.addnew = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.encodeFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.autoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.eNGLISHToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.jAPANToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tHAIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.kOREANToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.oTHERToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // btnSave
-            // 
-            this.btnSave.Location = new System.Drawing.Point(81, 3);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 24);
-            this.btnSave.TabIndex = 18;
-            this.btnSave.Text = "Save File";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // btnOpen
-            // 
-            this.btnOpen.Location = new System.Drawing.Point(0, 3);
-            this.btnOpen.Name = "btnOpen";
-            this.btnOpen.Size = new System.Drawing.Size(75, 23);
-            this.btnOpen.TabIndex = 17;
-            this.btnOpen.Text = "Open File";
-            this.btnOpen.UseVisualStyleBackColor = true;
-            this.btnOpen.Click += new System.EventHandler(this.btnOpen_Click);
             // 
             // lstStrings
             // 
@@ -72,10 +62,10 @@
             this.lstStrings.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstStrings.FullRowSelect = true;
             this.lstStrings.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
-            this.lstStrings.Location = new System.Drawing.Point(0, 33);
+            this.lstStrings.Location = new System.Drawing.Point(0, 27);
             this.lstStrings.MultiSelect = false;
             this.lstStrings.Name = "lstStrings";
-            this.lstStrings.Size = new System.Drawing.Size(227, 341);
+            this.lstStrings.Size = new System.Drawing.Size(227, 347);
             this.lstStrings.TabIndex = 0;
             this.lstStrings.UseCompatibleStateImageBehavior = false;
             this.lstStrings.View = System.Windows.Forms.View.Details;
@@ -144,7 +134,7 @@
             // 
             // ObjectId
             // 
-            this.ObjectId.Location = new System.Drawing.Point(233, 49);
+            this.ObjectId.Location = new System.Drawing.Point(233, 46);
             this.ObjectId.Name = "ObjectId";
             this.ObjectId.Size = new System.Drawing.Size(136, 20);
             this.ObjectId.TabIndex = 28;
@@ -152,7 +142,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(233, 33);
+            this.label3.Location = new System.Drawing.Point(233, 28);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(58, 13);
             this.label3.TabIndex = 29;
@@ -160,7 +150,7 @@
             // 
             // addnew
             // 
-            this.addnew.Location = new System.Drawing.Point(620, 45);
+            this.addnew.Location = new System.Drawing.Point(626, 42);
             this.addnew.Name = "addnew";
             this.addnew.Size = new System.Drawing.Size(75, 24);
             this.addnew.TabIndex = 30;
@@ -170,13 +160,104 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(539, 45);
+            this.button1.Location = new System.Drawing.Point(528, 42);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 24);
+            this.button1.Size = new System.Drawing.Size(92, 24);
             this.button1.TabIndex = 31;
-            this.button1.Text = "Delete IT";
+            this.button1.Text = "Delete Selected";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem,
+            this.encodeFileToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(701, 24);
+            this.menuStrip1.TabIndex = 32;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.openFileToolStripMenuItem,
+            this.saveFileToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(35, 20);
+            this.fileToolStripMenuItem.Text = "File";
+            // 
+            // openFileToolStripMenuItem
+            // 
+            this.openFileToolStripMenuItem.Name = "openFileToolStripMenuItem";
+            this.openFileToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
+            this.openFileToolStripMenuItem.Text = "Open File";
+            this.openFileToolStripMenuItem.Click += new System.EventHandler(this.openFileToolStripMenuItem_Click);
+            // 
+            // saveFileToolStripMenuItem
+            // 
+            this.saveFileToolStripMenuItem.Name = "saveFileToolStripMenuItem";
+            this.saveFileToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
+            this.saveFileToolStripMenuItem.Text = "Save File";
+            this.saveFileToolStripMenuItem.Click += new System.EventHandler(this.saveFileToolStripMenuItem_Click);
+            // 
+            // encodeFileToolStripMenuItem
+            // 
+            this.encodeFileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.autoToolStripMenuItem,
+            this.eNGLISHToolStripMenuItem,
+            this.jAPANToolStripMenuItem,
+            this.tHAIToolStripMenuItem,
+            this.kOREANToolStripMenuItem,
+            this.oTHERToolStripMenuItem});
+            this.encodeFileToolStripMenuItem.Name = "encodeFileToolStripMenuItem";
+            this.encodeFileToolStripMenuItem.Size = new System.Drawing.Size(73, 20);
+            this.encodeFileToolStripMenuItem.Text = "Encode File";
+            // 
+            // autoToolStripMenuItem
+            // 
+            this.autoToolStripMenuItem.Checked = true;
+            this.autoToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.autoToolStripMenuItem.Name = "autoToolStripMenuItem";
+            this.autoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.autoToolStripMenuItem.Text = "Default";
+            this.autoToolStripMenuItem.Click += new System.EventHandler(this.autoToolStripMenuItem_Click);
+            // 
+            // eNGLISHToolStripMenuItem
+            // 
+            this.eNGLISHToolStripMenuItem.Name = "eNGLISHToolStripMenuItem";
+            this.eNGLISHToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.eNGLISHToolStripMenuItem.Text = "ENGLISH";
+            this.eNGLISHToolStripMenuItem.Click += new System.EventHandler(this.eNGLISHToolStripMenuItem_Click);
+            // 
+            // jAPANToolStripMenuItem
+            // 
+            this.jAPANToolStripMenuItem.Name = "jAPANToolStripMenuItem";
+            this.jAPANToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.jAPANToolStripMenuItem.Text = "JAPAN";
+            this.jAPANToolStripMenuItem.Click += new System.EventHandler(this.jAPANToolStripMenuItem_Click);
+            // 
+            // tHAIToolStripMenuItem
+            // 
+            this.tHAIToolStripMenuItem.Name = "tHAIToolStripMenuItem";
+            this.tHAIToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.tHAIToolStripMenuItem.Text = "THAI";
+            this.tHAIToolStripMenuItem.Click += new System.EventHandler(this.tHAIToolStripMenuItem_Click);
+            // 
+            // kOREANToolStripMenuItem
+            // 
+            this.kOREANToolStripMenuItem.Name = "kOREANToolStripMenuItem";
+            this.kOREANToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.kOREANToolStripMenuItem.Text = "KOREAN";
+            this.kOREANToolStripMenuItem.Click += new System.EventHandler(this.kOREANToolStripMenuItem_Click);
+            // 
+            // oTHERToolStripMenuItem
+            // 
+            this.oTHERToolStripMenuItem.Name = "oTHERToolStripMenuItem";
+            this.oTHERToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.oTHERToolStripMenuItem.Text = "OTHER";
+            this.oTHERToolStripMenuItem.Click += new System.EventHandler(this.oTHERToolStripMenuItem_Click);
             // 
             // Desc_Editor
             // 
@@ -194,21 +275,20 @@
             this.Controls.Add(this.txtFilter);
             this.Controls.Add(this.btnApply);
             this.Controls.Add(this.txtString);
-            this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.btnOpen);
+            this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.Name = "Desc_Editor";
             this.Text = "Desc Editor";
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.Button btnOpen;
         private System.Windows.Forms.ListView lstStrings;
         private System.Windows.Forms.ColumnHeader columnHeader_0;
         private System.Windows.Forms.Button btnFilter;
@@ -221,5 +301,16 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button addnew;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem openFileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveFileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem encodeFileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem autoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem eNGLISHToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem jAPANToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tHAIToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem oTHERToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem kOREANToolStripMenuItem;
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Runtime.InteropServices;
 
-namespace Iff_Pangya_Editor_S7
+namespace Iff_Pangya_Editor
 {
         public class IffFile
         {
@@ -25,41 +25,32 @@ namespace Iff_Pangya_Editor_S7
 
             public static Encoding GetFileEncodingByRegion(IFF_REGION region)
             {
+            
                 IFF_REGION iff_region = region;
-                if (iff_region <= IFF_REGION.Japan)
-                {
-                    if (iff_region == IFF_REGION.Default)
-                    {
-                        return Encoding.GetEncoding(0x36a);
-                    }
-                    if (iff_region != IFF_REGION.Japan)
-                    {
-                        return Encoding.GetEncoding(0x36a);
-                    }
-                }
                 switch (iff_region)
                 {
                     case IFF_REGION.Japan_8960:
                     case IFF_REGION.Japan_52428:
-                        return Encoding.GetEncoding(0x3a4);
-
-                case IFF_REGION.Korea_30395:
-                        return Encoding.GetEncoding(0x3b5);
+                        return Encoding.GetEncoding(932);
+                    case IFF_REGION.Korea_30395:
+                        return Encoding.GetEncoding(949);
+                    case IFF_REGION.Default:
+                        return Encoding.GetEncoding(874);
                 }
+            
+                //unknow so normal encoding
+                return Encoding.Unicode;
+            }
 
-            //unknow so normal encoding
-            return Encoding.GetEncoding(0x36a);
-        }
-
-            public void GetIffRegion(BinaryReader reader)
+            public void SetIffRegion(BinaryReader reader)
             {
                 long position = reader.BaseStream.Position;
 
-                reader.BaseStream.Seek(2L, System.IO.SeekOrigin.Begin);
+                reader.BaseStream.Seek(2, System.IO.SeekOrigin.Begin);
                 ushort RegionIff = reader.ReadUInt16();
                 switch (RegionIff)
                 {
-                    case 0:
+                    case 0x0000:
                         this.Region = IFF_REGION.Default;
                         return;
 
@@ -77,6 +68,7 @@ namespace Iff_Pangya_Editor_S7
                         return;
                 }
                 this.Region = IFF_REGION.Default;
+                return;
             }
 
             public ushort GetNumberOfRecords(BinaryReader reader)
@@ -174,9 +166,11 @@ namespace Iff_Pangya_Editor_S7
             {
                 Default = 0,
                 Japan = 0x224,
-                Japan_52428 = 0xcccc,
+                Japan_52428 = 0xCCCC,
                 Japan_8960 = 0x2300,
-                Korea_30395 = 0x76bb
+                Korea_30395 = 0x76BB,
+                Thaiwan = 0x7900,
+                Null = 0xffff
             }
         }
 

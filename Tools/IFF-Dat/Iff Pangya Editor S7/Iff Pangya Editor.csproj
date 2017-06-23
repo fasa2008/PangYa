@@ -7,8 +7,8 @@
     <ProjectGuid>{3BBF288E-6E62-4158-89B3-92D081AEE169}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Iff_Pangya_Editor_S7</RootNamespace>
-    <AssemblyName>Iff Pangya Editor S7</AssemblyName>
+    <RootNamespace>Iff_Pangya_Editor</RootNamespace>
+    <AssemblyName>Iff Pangya Editor</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -84,6 +84,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

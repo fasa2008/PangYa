@@ -1,4 +1,4 @@
-﻿namespace Iff_Pangya_Editor_S7
+﻿namespace Iff_Pangya_Editor
 {
     partial class MainWindow
     {
