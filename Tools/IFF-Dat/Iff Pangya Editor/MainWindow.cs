@@ -43,5 +43,10 @@ namespace Iff_Pangya_Editor
         {
             Close();
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            new CharacterEditor().Show();
+        }
     }
 }

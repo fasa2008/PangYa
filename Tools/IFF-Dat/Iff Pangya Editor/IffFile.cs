@@ -29,17 +29,18 @@ namespace Iff_Pangya_Editor
                 IFF_REGION iff_region = region;
                 switch (iff_region)
                 {
-                    case IFF_REGION.Japan_8960:
-                    case IFF_REGION.Japan_52428:
+
+                    case IFF_REGION.Japan:
                         return Encoding.GetEncoding(932);
-                    case IFF_REGION.Korea_30395:
+                    case IFF_REGION.Korea:
                         return Encoding.GetEncoding(949);
                     case IFF_REGION.Default:
+                    case IFF_REGION.Usa:
                         return Encoding.GetEncoding(874);
                 }
             
-                //unknow so normal encoding
-                return Encoding.Unicode;
+                //unknow so encoding UTF8
+                return Encoding.UTF8;
             }
 
             public void SetIffRegion(BinaryReader reader)
@@ -60,11 +61,11 @@ namespace Iff_Pangya_Editor
                         return;
 
                     case 0x2300:
-                        this.Region = IFF_REGION.Japan_8960;
+                        this.Region = IFF_REGION.Japan;
                         return;
 
                     case 0x76bb:
-                        this.Region = IFF_REGION.Korea_30395;
+                        this.Region = IFF_REGION.Korea;
                         return;
                 }
                 this.Region = IFF_REGION.Default;
@@ -119,13 +120,12 @@ namespace Iff_Pangya_Editor
                 switch (this.Region)
                 {
                     case IFF_REGION.Default:
+                    case IFF_REGION.Usa:
                     case IFF_REGION.Japan:
-                    case IFF_REGION.Japan_8960:
-                    case IFF_REGION.Japan_52428:
                         writer.Write(this.MagicNumber[2]);
                         break;
 
-                    case IFF_REGION.Korea_30395:
+                    case IFF_REGION.Korea:
                         writer.Write(this.MagicNumber[1]);
                         break;
 
@@ -164,13 +164,11 @@ namespace Iff_Pangya_Editor
 
             public enum IFF_REGION
             {
-                Default = 0,
-                Japan = 0x224,
-                Japan_52428 = 0xCCCC,
-                Japan_8960 = 0x2300,
-                Korea_30395 = 0x76BB,
-                Thaiwan = 0x7900,
-                Null = 0xffff
+                Default = -1,
+                Usa = 0,
+                Japan = 1,
+                Korea = 2,
+                Thaiwan = 3
             }
         }
 

@@ -21,7 +21,7 @@ namespace Iff_Pangya_Editor
             public string Langue;
         }
 
-        public IFF_REGION RegionSelected = IffFile.IFF_REGION.Null;
+        public IFF_REGION RegionSelected = IffFile.IFF_REGION.Default;
         private List<LangStock> languelist;
         public LangageEditor()
         {
@@ -105,9 +105,6 @@ namespace Iff_Pangya_Editor
             {
                 this.languelist = new List<LangStock>();
 
-                if (RegionSelected == IffFile.IFF_REGION.Null)
-                    RegionSelected = IffFile.IFF_REGION.Default;
-
                 using (BinaryReader reader = new BinaryReader(File.Open(dialog.FileName, FileMode.Open, FileAccess.Read), IffFile.GetFileEncodingByRegion(RegionSelected)))
                 {
                     int num = 0;
@@ -116,17 +113,7 @@ namespace Iff_Pangya_Editor
                     {
                         if (reader.PeekChar() != 0)
                         {
-                            //if (RegionSelected == IffFile.IFF_REGION.Null)
-                            {
-                                builder.Append(reader.ReadChar());
-                            }
-                            /*
-                            else
-                            {
-                                byte[] bytSrc = IffFile.GetFileEncodingByRegion(RegionSelected).GetBytes(reader.ReadChar().ToString());
-                                builder.Append(IffFile.GetFileEncodingByRegion(RegionSelected).GetString(bytSrc));
-                            }*/
-                           
+                                builder.Append(reader.ReadChar());     
                         }
                         else
                         {
@@ -155,8 +142,6 @@ namespace Iff_Pangya_Editor
             };
             if (dialog.ShowDialog() == DialogResult.OK)
             {
-                if (RegionSelected == IffFile.IFF_REGION.Null)
-                    RegionSelected = IffFile.IFF_REGION.Default;
 
                 using (BinaryWriter writer = new BinaryWriter(File.Open(dialog.FileName, FileMode.Create, FileAccess.Write), IffFile.GetFileEncodingByRegion(RegionSelected)))
                 {
@@ -183,21 +168,21 @@ namespace Iff_Pangya_Editor
         private void autoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Uncheck_all_encoding(sender, e);
-            RegionSelected = IffFile.IFF_REGION.Null;
+            RegionSelected = IffFile.IFF_REGION.Default;
             autoToolStripMenuItem.Checked = true;
         }
 
         private void eNGLISHToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Uncheck_all_encoding(sender, e);
-            RegionSelected = IffFile.IFF_REGION.Default;
+            RegionSelected = IffFile.IFF_REGION.Usa;
             eNGLISHToolStripMenuItem.Checked = true;
         }
 
         private void jAPANToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Uncheck_all_encoding(sender, e);
-            RegionSelected = IffFile.IFF_REGION.Japan_8960;
+            RegionSelected = IffFile.IFF_REGION.Japan;
             jAPANToolStripMenuItem.Checked = true;
         }
 
@@ -218,7 +203,7 @@ namespace Iff_Pangya_Editor
         private void kOREANToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Uncheck_all_encoding(sender, e);
-            RegionSelected = IffFile.IFF_REGION.Korea_30395;
+            RegionSelected = IffFile.IFF_REGION.Korea;
             kOREANToolStripMenuItem.Checked = true;
         }
     }
