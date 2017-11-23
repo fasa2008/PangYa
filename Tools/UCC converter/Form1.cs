@@ -79,10 +79,10 @@ namespace UCC_converter_Tools
 
             // SD Standard = 49152/65536 BYTE
             // SD 256x256  = 196608 BYTE
-            string size = fs.Length.ToString();
-            MessageBox.Show(size);
+            //string size = fs.Length.ToString();
+            //MessageBox.Show(size);
 
-            if (fs.Length > 65536 || fs.Length == 24576)
+            if (fs.Length > 65536 )
             {
                 flag = new Bitmap(256, 256);
                 width = 256;
