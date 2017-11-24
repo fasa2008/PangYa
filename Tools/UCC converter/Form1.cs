@@ -328,8 +328,8 @@ namespace UCC_converter_Tools
 
         private void importToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (File.Exists(ActualFileSD + "front.png") == false 
-                || File.Exists(ActualFileSD + "back.png") == false)
+            if (File.Exists(ActualFileSD + "\\" + "front.png") == false 
+                || File.Exists(ActualFileSD + "\\" + "back.png") == false)
             {
                 MessageBox.Show("You need import before export ... The Folder of import ->  :" + ActualFileSD);
             }
